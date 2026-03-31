@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name — Data Science</title>
+  <title>Aryan Banerjee — Data Science</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -66,41 +66,39 @@
     .hero-content { min-width: 0; }
     .hero-portrait-wrap {
       position: relative;
-      width: 100%;
-      max-width: 340px;
+      width: 280px;
+      height: 280px;
       justify-self: end;
+      flex-shrink: 0;
     }
     .hero-portrait-wrap::before {
       content: '';
       position: absolute;
-      bottom: -10px;
-      left: -10px;
-      width: 60%;
-      height: 60%;
-      border-left: 1.5px solid var(--accent);
-      border-bottom: 1.5px solid var(--accent);
+      inset: -6px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
       opacity: 0;
-      transform: translate(6px, -6px);
+      transform: scale(0.92);
       transition: opacity 0.35s ease, transform 0.35s ease;
       pointer-events: none;
-      z-index: 2;
     }
     .hero-portrait-wrap:hover::before {
       opacity: 1;
-      transform: translate(0, 0);
+      transform: scale(1);
     }
     .hero-portrait {
       display: block;
       width: 100%;
-      aspect-ratio: 3 / 4;
+      height: 100%;
       object-fit: cover;
-      object-position: top center;
+      object-position: center 20%;
+      border-radius: 50%;
       filter: grayscale(40%) saturate(0.7);
       transition: filter 0.4s ease, transform 0.4s ease;
     }
     .hero-portrait-wrap:hover .hero-portrait {
       filter: grayscale(0%) saturate(1);
-      transform: scale(1.02);
+      transform: scale(1.04);
     }
     .label {
       font-family: var(--mono);
@@ -330,8 +328,7 @@
         padding-left: 20px;
         padding-right: 20px;
       }
-      .hero-portrait-wrap { max-width: 100%; justify-self: stretch; order: -1; }
-      .hero-portrait { aspect-ratio: 4 / 3; object-position: top center; }
+      .hero-portrait-wrap { width: 180px; height: 180px; justify-self: center; order: -1; }
       .projects { grid-template-columns: 1fr; }
       .project:nth-child(odd) { padding-right: 0; border-right: none; }
       .project:nth-child(even) { padding-left: 0; }
@@ -349,7 +346,7 @@
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="https://github.com/yourusername">GitHub</a>
+      <a href="https://github.com/Abaner2023">GitHub</a>
     </div>
   </nav>
 
@@ -357,11 +354,11 @@
     <div class="hero-content">
       <div class="label">Data Science &amp; Machine Learning</div>
       <h1>
-        Building models that<br>
-        <em>explain the world</em><br>
-        from the ground up.
+        From genomes to<br>
+        <em>social networks</em> —<br>
+        finding structure in noise.
       </h1>
-      <p class="hero-sub">6. Semester BSc student. Interested in interpretability, Data management, </p>
+      <p class="hero-sub">MSc student at Aalborg University. Interested in representation learning, NLP, and building systems that work outside the notebook.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">Status<span>Open to internships and Student Positions</span></div>
         <div class="hero-meta-item">Location<span>Aalborg, DK</span></div>
@@ -383,57 +380,59 @@
 
       <div class="project">
         <div class="project-meta">
-          <span class="tag">NLP</span>
-          <span class="year">2024</span>
+          <span class="tag">Deep Learning</span>
+          <span class="year">2025</span>
         </div>
-        <h3>Sentiment Analysis on Financial News</h3>
-        <p>Fine-tuned BERT on 40k Reuters headlines. Compared against classical baselines. F1 of 0.87 on hold-out set.</p>
+        <h3>Metagenomics Binning with Curriculum Learning</h3>
+        <p>Self-supervised pipeline to cluster DNA fragments from mixed microbial samples — no labels, no reference genomes. Curriculum learning trains on easy sequence pairs first, gradually tackling harder ones. Compared k-mer embeddings, DNABERT-S, and a contrastive approach across 6 benchmark datasets. Identified overfitting after ~100 epochs; proposed early stopping as an honest evaluation of where curriculum learning falls short vs. large pretrained models.</p>
         <div class="tools">
           <span class="tool">PyTorch</span>
-          <span class="tool">HuggingFace</span>
-          <span class="tool">Pandas</span>
+          <span class="tool">Contrastive Learning</span>
+          <span class="tool">k-mer Embeddings</span>
+          <span class="tool">Cosine Similarity</span>
+          <span class="tool">HPC (Slurm)</span>
+        </div>
+        <div class="tools" style="margin-top:10px;">
+          <a href="https://github.com/zeelan111/p4-code" style="font-family:var(--mono);font-size:10px;color:var(--accent);text-decoration:none;letter-spacing:0.08em;" target="_blank" rel="noopener">→ github.com/zeelan111/p4-code</a>
         </div>
       </div>
 
       <div class="project">
         <div class="project-meta">
-          <span class="tag">Forecasting</span>
+          <span class="tag">Graph Analysis</span>
+          <span class="year">2025</span>
+        </div>
+        <h3>Misinformation Spread on Bluesky</h3>
+        <p>Analyzed how false information propagates through a social network vs. factual content. Built a full pipeline on 125GB of Bluesky data: LLM-based fact-checking with Llama3 + Wikidata, followed by large-scale graph traversal across 25 million conversation trees on an HPC cluster. Misinformers produce shallower, shorter propagation chains — but the difference only emerges at the aggregated user level, not in individual posts.</p>
+        <div class="tools">
+          <span class="tool">Python</span>
+          <span class="tool">Llama3</span>
+          <span class="tool">BFS/DFS</span>
+          <span class="tool">KS Tests</span>
+          <span class="tool">k-means</span>
+          <span class="tool">HPC (Strato/Slurm)</span>
+        </div>
+        <div class="tools" style="margin-top:10px;">
+          <a href="https://github.com/zeelan111/P5" style="font-family:var(--mono);font-size:10px;color:var(--accent);text-decoration:none;letter-spacing:0.08em;" target="_blank" rel="noopener">→ github.com/zeelan111/P5</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="tag">Graph ML</span>
           <span class="year">2024</span>
         </div>
-        <h3>Energy Demand Prediction</h3>
-        <p>LSTM vs. XGBoost on hourly energy data. Feature engineering with weather covariates reduced RMSE by 18%.</p>
+        <h3>Link Prediction on Featureless Graphs</h3>
+        <p>Compared GCN and Node2Vec for link prediction on a citation network of 1.3M nodes and 6.6M edges — no node features available. Engineered structural features (normalized node degree, clustering coefficient, PageRank, eigenvector centrality) and evaluated across three dataset scales. GCN outperformed Node2Vec on smaller datasets; Node2Vec's perfect score on the full dataset was traced to data leakage and inflated negative sampling — an honest diagnosis of where the evaluation broke down.</p>
         <div class="tools">
-          <span class="tool">TensorFlow</span>
-          <span class="tool">XGBoost</span>
-          <span class="tool">Scikit-learn</span>
+          <span class="tool">PyTorch Geometric</span>
+          <span class="tool">NetworkX</span>
+          <span class="tool">Node2Vec</span>
+          <span class="tool">GCN / GAE</span>
+          <span class="tool">scikit-learn</span>
         </div>
-      </div>
-
-      <div class="project">
-        <div class="project-meta">
-          <span class="tag">CV</span>
-          <span class="year">2023</span>
-        </div>
-        <h3>Medical Image Classifier</h3>
-        <p>CNN trained on chest X-rays. Explored data augmentation to handle class imbalance in a clinical dataset.</p>
-        <div class="tools">
-          <span class="tool">PyTorch</span>
-          <span class="tool">Albumentations</span>
-          <span class="tool">MONAI</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-meta">
-          <span class="tag">EDA</span>
-          <span class="year">2023</span>
-        </div>
-        <h3>Copenhagen Bike Traffic Analysis</h3>
-        <p>Exploratory analysis of 5 years of city sensor data. Built interactive visualizations to surface seasonal patterns.</p>
-        <div class="tools">
-          <span class="tool">Pandas</span>
-          <span class="tool">Plotly</span>
-          <span class="tool">GeoPandas</span>
+        <div class="tools" style="margin-top:10px;">
+          <a href="https://github.com/zeelan111/P3---code/tree/main" style="font-family:var(--mono);font-size:10px;color:var(--accent);text-decoration:none;letter-spacing:0.08em;" target="_blank" rel="noopener">→ github.com/zeelan111/P3---code</a>
         </div>
       </div>
 
@@ -448,10 +447,10 @@
     </div>
     <div class="about-grid">
       <div>
-        <div class="about-name">Your<br><em>Name</em></div>
-        <div class="about-role">MSc Data Science</div>
+        <div class="about-name">Aryan<br><em>Banerjee</em></div>
+        <div class="about-role">MSc Data Science &amp; Machine Learning</div>
         <div class="about-links">
-          <a href="https://github.com/yourusername">github.com/yourusername</a>
+          <a href="https://github.com/Abaner2023">github.com/Abaner2023</a>
           <a href="https://linkedin.com/in/yourname">linkedin.com/in/yourname</a>
           <a href="mailto:hello@yourname.io">hello@yourname.io</a>
         </div>
@@ -466,7 +465,7 @@
   </section>
 
   <footer>
-    <span class="footer-left">© 2025 — All work my own</span>
+    <span class="footer-left">© 2025 Aryan Banerjee — All work my own</span>
     <span class="footer-right">Open to internships ↗</span>
   </footer>
 
