@@ -299,6 +299,44 @@
       color: var(--dim);
     }
 
+    /* EXTRAS */
+    .extras {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .extra-item {
+      padding: 20px 0;
+    }
+    .extra-item:nth-child(odd)  { padding-right: 28px; border-right: 0.5px solid var(--faint); }
+    .extra-item:nth-child(even) { padding-left: 28px; }
+    .extra-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .extra-title {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .extra-role {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .extra-desc {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
     /* FOOTER */
     footer {
       padding: 20px 36px;
@@ -322,6 +360,9 @@
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
+      .extras { grid-template-columns: 1fr; }
+      .extra-item:nth-child(odd)  { padding-right: 0; border-right: none; border-bottom: 0.5px solid var(--faint); }
+      .extra-item:nth-child(even) { padding-left: 0; }
       nav, section, footer { padding-left: 20px; padding-right: 20px; }
       .hero {
         grid-template-columns: 1fr;
@@ -358,7 +399,7 @@
         <em>social networks</em> —<br>
         finding structure in noise.
       </h1>
-      <p class="hero-sub">MSc student at Aalborg University. Interested in representation learning, NLP, and building systems that work outside the notebook.</p>
+      <p class="hero-sub">Bsc student at Aalborg University. Interested in representation learning, ML, and building systems that work outside the notebook.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">Status<span>Open to internships and Student Positions</span></div>
         <div class="hero-meta-item">Location<span>Aalborg, DK</span></div>
@@ -448,15 +489,15 @@
     <div class="about-grid">
       <div>
         <div class="about-name">Aryan<br><em>Banerjee</em></div>
-        <div class="about-role">MSc Data Science &amp; Machine Learning</div>
+        <div class="about-role">BSc Data Science &amp; Machine Learning</div>
         <div class="about-links">
           <a href="https://github.com/Abaner2023">github.com/Abaner2023</a>
-          <a href="https://linkedin.com/in/yourname">linkedin.com/in/yourname</a>
-          <a href="mailto:hello@yourname.io">hello@yourname.io</a>
+          <a href="https://linkedin.com/in/aryan-banerjee-447056251/">linkedin.com/in/aryan-banerjee-447056251/</a>
+          <a href="mailto:abanerjee747@gmail.com">abanerjee747@gmail.com</a>
         </div>
       </div>
       <p class="about-text">
-        I study how machines learn patterns from data — and more importantly,
+        I study how machines learn patterns from data, and more importantly,
         <strong>when and why they fail.</strong> My work sits at the intersection
         of clean engineering and honest evaluation. I care about models that are
         useful outside a Jupyter notebook.
@@ -464,8 +505,37 @@
     </div>
   </section>
 
+  <section>
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Beyond the Work</span>
+      <div class="divider"></div>
+    </div>
+    <div class="extras">
+
+      <div class="extra-item">
+        <div class="extra-header">
+          <span class="extra-title">Datapings Business Analytics</span>
+          <span class="year">2022 –</span>
+        </div>
+        <div class="extra-role">Founder</div>
+        <p class="extra-desc">Founded and run a small analytics consultancy. Built data-driven reporting pipelines and automation workflows using Power BI and Power Automate for logistics clients, including an ongoing engagement to streamline operations at Limfjords Danske Rodfrugter A/S.</p>
+      </div>
+
+      <div class="extra-item">
+        <div class="extra-header">
+          <span class="extra-title">Jagriti</span>
+          <span class="year">Ongoing</span>
+        </div>
+        <div class="extra-role">Volunteer — Accountant &amp; Events</div>
+        <p class="extra-desc">Planned and managed events for 150+ attendees. Facilitated cultural exchange between the Danish and Indian communities through the Sports and Play Initiative. Oversaw public relations and financial accounting for the organisation.</p>
+      </div>
+
+    </div>
+  </section>
+
   <footer>
-    <span class="footer-left">© 2025 Aryan Banerjee — All work my own</span>
+    <span class="footer-left">© 2025 Aryan Banerjee</span>
     <span class="footer-right">Open to internships ↗</span>
   </footer>
 
