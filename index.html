@@ -58,6 +58,49 @@
     .hero {
       padding: 56px 36px 48px;
       border-bottom: 0.5px solid var(--faint);
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content { min-width: 0; }
+    .hero-portrait-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      justify-self: end;
+    }
+    .hero-portrait-wrap::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      width: 60%;
+      height: 60%;
+      border-left: 1.5px solid var(--accent);
+      border-bottom: 1.5px solid var(--accent);
+      opacity: 0;
+      transform: translate(6px, -6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-portrait-wrap:hover::before {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    .hero-portrait {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(40%) saturate(0.7);
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+    .hero-portrait-wrap:hover .hero-portrait {
+      filter: grayscale(0%) saturate(1);
+      transform: scale(1.02);
     }
     .label {
       font-family: var(--mono);
@@ -281,7 +324,14 @@
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      nav, .hero, section, footer { padding-left: 20px; padding-right: 20px; }
+      nav, section, footer { padding-left: 20px; padding-right: 20px; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .hero-portrait-wrap { max-width: 100%; justify-self: stretch; order: -1; }
+      .hero-portrait { aspect-ratio: 4 / 3; object-position: top center; }
       .projects { grid-template-columns: 1fr; }
       .project:nth-child(odd) { padding-right: 0; border-right: none; }
       .project:nth-child(even) { padding-left: 0; }
@@ -304,17 +354,22 @@
   </nav>
 
   <div class="hero">
-    <div class="label">Data Science &amp; Machine Learning</div>
-    <h1>
-      Building models that<br>
-      <em>explain the world</em><br>
-      from the ground up.
-    </h1>
-    <p class="hero-sub">MSc student. Interested in interpretability, NLP, and the gap between a clean notebook and a real system.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">Status<span>Open to internships</span></div>
-      <div class="hero-meta-item">Location<span>Copenhagen, DK</span></div>
-      <div class="hero-meta-item">Stack<span>Python · PyTorch · SQL</span></div>
+    <div class="hero-content">
+      <div class="label">Data Science &amp; Machine Learning</div>
+      <h1>
+        Building models that<br>
+        <em>explain the world</em><br>
+        from the ground up.
+      </h1>
+      <p class="hero-sub">6. Semester BSc student. Interested in interpretability, Data management, </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">Status<span>Open to internships and Student Positions</span></div>
+        <div class="hero-meta-item">Location<span>Aalborg, DK</span></div>
+        <div class="hero-meta-item">Stack<span>Python · PyTorch · SQL · LaTeX · Postman · Neo4j · Java · Power automate</span></div>
+      </div>
+    </div>
+    <div class="hero-portrait-wrap">
+      <img class="hero-portrait" src="portrait.jpg" alt="Aryan Banerjee">
     </div>
   </div>
 
