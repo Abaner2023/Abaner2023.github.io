@@ -20,6 +20,18 @@
       --serif: Georgia, 'Times New Roman', serif;
     }
 
+    /* Light theme overrides when [data-theme="light"] is set on <html> */
+    [data-theme="light"] {
+      --bg: #fbfbfa;
+      --text: #0d0d0b;
+      --muted: #444444;
+      --subtle: #e6e6e6;
+      --faint: #e0dfdb;
+      --accent: #2a7f62;
+      --accent-bg: #eef6ef;
+      --dim: #6b6b6b;
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -53,6 +65,25 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
+
+    /* container for links + theme toggle */
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--faint);
+      background: transparent;
+      color: var(--dim);
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.18s, border-color 0.18s, background 0.18s;
+    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
     /* HERO */
     .hero {
@@ -93,12 +124,18 @@
       object-fit: cover;
       object-position: center 20%;
       border-radius: 50%;
-      filter: grayscale(40%) saturate(0.7);
-      transition: filter 0.4s ease, transform 0.4s ease;
+      /* start fully desaturated; animate to color after page load */
+      filter: grayscale(100%) saturate(0.6);
+      transition: transform 0.4s ease;
+      animation: portrait-colorize 0.9s ease 2s both;
     }
     .hero-portrait-wrap:hover .hero-portrait {
       filter: grayscale(0%) saturate(1);
       transform: scale(1.04);
+    }
+    @keyframes portrait-colorize {
+      from { filter: grayscale(100%) saturate(0.6); }
+      to   { filter: grayscale(0%) saturate(1); }
     }
     .label {
       font-family: var(--mono);
@@ -384,10 +421,13 @@
 
   <nav>
     <div class="nav-logo">Aryan Banerjee</div>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="https://github.com/Abaner2023">GitHub</a>
+    <div class="nav-actions">
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/Abaner2023">GitHub</a>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">🌙</button>
     </div>
   </nav>
 
@@ -519,7 +559,7 @@
           <span class="year">2022 –</span>
         </div>
         <div class="extra-role">Founder</div>
-        <p class="extra-desc">Founded and run a small analytics consultancy. Built data-driven reporting pipelines and automation workflows using Power BI and Power Automate for logistics clients, including an ongoing engagement to streamline operations at Limfjords Danske Rodfrugter A/S.</p>
+        <p class="extra-desc">Founded and run a startup analytics consultancy. Built data-driven reporting pipelines and automation workflows using Power BI and Power Automate for logistics clients, including an ongoing engagement to streamline operations at Limfjords Danske Rodfrugter A/S.</p>
       </div>
 
       <div class="extra-item">
@@ -538,6 +578,35 @@
     <span class="footer-left">© 2025 Aryan Banerjee</span>
     <span class="footer-right">Open to internships ↗</span>
   </footer>
+</footer>
+
+  <script>
+    (function(){
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      const stored = localStorage.getItem('theme');
+      const systemPrefDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = stored ? stored : (systemPrefDark ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', initial);
+
+      function updateIcon(theme){
+        toggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+        toggle.setAttribute('aria-pressed', theme === 'dark');
+      }
+
+      updateIcon(initial);
+
+      toggle.addEventListener('click', function(){
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcon(next);
+      });
+    })();
+  </script>
 
 </body>
 </html>
